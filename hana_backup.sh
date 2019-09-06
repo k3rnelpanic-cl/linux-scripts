@@ -1,18 +1,19 @@
 #!/bin/bash
 #       Script desarrollado por Victor Vidal
-#       Automatizacion generacion respaldos de BD HANA
+#       Automatizacion generacion respaldos de BD HANA y limpia logs de catalogo HANA en base a X dias
 #
-#       INST    =       Acronimo de Instancia de BD Hana
-#       COD     =       Codigo numerico de Instancia Hana
-#       BACKUP_RUTADATA =       Ruta de destino de respaldos Hana BD
-#       BACKUP_RUTALOG  =       Ruta de destino respaldos Log BD.
-RETENCION=55
-SEMANAS=7
+#       INST            Acronimo de Instancia de BD Hana
+#       COD             Codigo numerico de Instancia Hana
+#       BACKUP_RUTADATA Ruta de destino de respaldos Hana BD
+#       RETENCION       Dias a mantener en logs de hana BD
+#       SEMANAS         Semanas a listar de comparar datos
 INST="NDD"
 COD="04"
 NUM="HDB$COD"
-SQLBIN=/usr/sap/$INST/$NUM/exe/hdbsql
+RETENCION=55
+SEMANAS=7
 BACKUP_RUTADATA=/hana/backup/$INST/databackup
+SQLBIN=/usr/sap/$INST/$NUM/exe/hdbsql
 #       VARIABLES
 TIMESTAMP="$(date +\%F\_%H\%M)"
 MESBKP=$(date +%Y%m)
